@@ -38,10 +38,10 @@ There is no need to run `jj commit`.
 
 **CRITICAL**: Unlike git, jj commits can be freely modified. This enables a high-quality commit workflow:
 
-1. Use `jj new` to initialize a new, blank commit.
-2. Describe your intended changes first with `jj desc -m"Message"`
-3. Make your changes
-4. When complete, use `jj new` to initialize a new, blank commit and begin the process again.
+1. Before starting work, run `jj st`. If `@` already has changes, run `jj new` first. If `@` is empty, use it as-is.
+2. Describe your intended changes with `jj desc -m"Message"`
+3. Make your changes.
+4. Do NOT run `jj new` when finished — leave that to the next task's step 1.
 
 You may refine the commit using `jj squash` or `jj absorb` as needed
 
@@ -295,7 +295,7 @@ jj st
 | View status | `jj st` |
 | View log | `jj log` |
 | View diff | `jj diff` |
-| New commit | `jj new && jj desc -m "message"` |
+| New commit | `jj st` then `jj new` only if `@` has changes, then `jj desc -m "message"` |
 | Edit commit | `jj edit <id>` |
 | Squash to parent | `jj squash` |
 | Auto-distribute | `jj absorb` |
