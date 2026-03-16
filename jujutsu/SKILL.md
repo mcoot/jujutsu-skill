@@ -287,6 +287,32 @@ jj st
 4. **Are there unrelated changes?** Use `jj restore` to move changes out, then create separate commits
 5. **Should changes be elsewhere?** Use `jj squash` or `jj absorb`
 
+## Workspaces
+
+jj provides _workspaces_ analogous to git worktrees for checking out multiple working copies.
+
+These are managed with workspace commands:
+
+```
+# Add a new workspace at revision specified in revset language; its name will be the basename of the destination directory
+jj workspace add ../my-repo-workspace-blah -r master
+
+# List existing workspaces
+jj workspace list
+
+# Forget a workspace or workspaces (does not delete its files, but stops tracking it)
+jj workspace forget my-repo-workspace-blah
+
+# Get the root directory of the current workspace
+jj workspace root
+```
+
+### Workspace rules
+
+- Workspaces should be located as siblings of the default workspace (i.e. under `../`)
+- A workspace should never work on an ancestor revision of another workspace
+  - If this happens it will lead to a stale working copy, which then can be fixed with `jj workspace update-stale`
+
 ## Quick Reference
 
 | Action | Command |
