@@ -309,7 +309,6 @@ jj workspace root
 
 ### Workspace rules
 
-- Workspaces should be located as siblings of the default workspace (i.e. under `../`)
 - A workspace should never work on an ancestor revision of another workspace
   - If this happens it will lead to a stale working copy, which then can be fixed with `jj workspace update-stale`
 
